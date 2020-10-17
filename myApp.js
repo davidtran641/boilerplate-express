@@ -10,15 +10,9 @@ var app = express();
 
 console.log("Hello World");
 
-app.get("/views/index.html", function(req, res){
+app.get("/", function(req, res){
     res.sendFile(__dirname + "/views/index.html")
 });
-
-app.get("/", function(req, res) {
-    res.send("Hello Express");
-});
-
-/** 3) Serve an HTML file */
 
 
 /** 4) Serve static assets  */
