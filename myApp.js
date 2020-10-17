@@ -1,3 +1,4 @@
+var bodyParser = require('body-parser');
 
 var express = require('express');
 var app = express();
@@ -17,6 +18,8 @@ app.use(function(req, res, next) {
 
 app.use(express.static(__dirname + "/public"));
 
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/views/index.html")
 });
@@ -34,33 +37,15 @@ app.get('/now', function(req, res, next){
     next();
 }, function(req, res) {
     res.send({"time": req.time});
-})
+});
 
 app.get('/:word/echo', function(req, res) {
     res.json({"echo": req.params.word});
-})
+});
 
 app.get('/name',  function(req, res) {
     res.json({'name': req.query.first + ' ' + req.query.last});
-})
- 
- 
-/** 7) Root-level Middleware - A logger */
-//  place it before all the routes !
-
-
-/** 8) Chaining middleware. A Time server */
-
-
-/** 9)  Get input from client - Route parameters */
-
-
-/** 10) Get input from client - Query parameters */
-// /name?first=<firstname>&last=<lastname>
-
-  
-/** 11) Get ready for POST Requests - the `body-parser` */
-// place it before all the routes !
+});
 
 
 /** 12) Get data form POST  */
