@@ -12,6 +12,7 @@ console.log("Hello World");
 
 app.use(function(req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
 });
 
 app.use(express.static(__dirname + "/public"));
