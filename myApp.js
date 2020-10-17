@@ -36,6 +36,9 @@ app.get('/now', function(req, res, next){
     res.send({"time": req.time});
 })
 
+app.get('/:word/echo', function(req, res) {
+    res.json({"echo": req.params.word});
+})
  
  
 /** 7) Root-level Middleware - A logger */
